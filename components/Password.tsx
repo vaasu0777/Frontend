@@ -95,7 +95,7 @@ const PasswordManager = () => {
     let token = await getToken();
     const c = confirm("Do you really want to delete this password?");
     if (c) {
-      await fetch("http://localhost:8080/passwords", {
+      await fetch("https://backend-p5qv.onrender.com/passwords", {
         method: "DELETE",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`, },
         body: JSON.stringify({ _id: id, userId }),
@@ -110,7 +110,7 @@ const PasswordManager = () => {
       const token = await getToken();
       if (!token) return; // ← add this guard
 
-      const req = await fetch("http://localhost:8080/passwords", {
+      const req = await fetch("https://backend-p5qv.onrender.com/passwords", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -145,7 +145,7 @@ const PasswordManager = () => {
     }
 
     if (editMode) {
-      await fetch("http://localhost:8080/passwords", {
+      await fetch("https://backend-p5qv.onrender.com/passwords", {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`, },
         body: JSON.stringify({ _id: editId, site: website, username, password }),
@@ -153,7 +153,7 @@ const PasswordManager = () => {
       setEditMode(false);
       toast.success("Password edited successfully!!", toastObj);
     } else {
-      await fetch("http://localhost:8080/passwords", {
+      await fetch("https://backend-p5qv.onrender.com/passwords", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`, },
         body: JSON.stringify({ site: website, username, password, userId: userId })

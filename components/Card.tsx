@@ -122,7 +122,7 @@ const CardManager = () => {
       const token = await getToken();
       if (!token) return;
 
-      const req = await fetch(`http://localhost:8080/cards`, {
+      const req = await fetch(`https://backend-p5qv.onrender.com/cards`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -166,7 +166,7 @@ const CardManager = () => {
 
       if (editingId) {
         // --- EDIT ---
-        const res = await fetch(`http://localhost:8080/cards`, {
+        const res = await fetch(`https://backend-p5qv.onrender.com/cards`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -189,7 +189,7 @@ const CardManager = () => {
         toast.success("Card updated successfully!", toastObj);
       } else {
         // --- ADD NEW ---
-        const res = await fetch(`http://localhost:8080/cards`, {
+        const res = await fetch(`https://backend-p5qv.onrender.com/cards`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -230,7 +230,7 @@ const CardManager = () => {
     if (!c) return;
 
     const token = await getToken();
-    await fetch("http://localhost:8080/cards", {
+    await fetch("https://backend-p5qv.onrender.com/cards", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
